@@ -5,12 +5,21 @@
       <v-toolbar-title>Animated Navbar</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-col>
-        <v-btn
-          class="icon-button md:flex hidden"
-          icon="mdi-account"
-        @click="goToUser"
-        >
-        </v-btn>
+        <v-menu>
+          <template v-slot:activator="{ props }">
+            <v-btn   v-bind="props" class="icon-button md:flex hidden" icon="mdi-account">
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item>
+           <v-btn>haha</v-btn>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>aa</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
         <v-btn icon class="icon-button md:flex hidden custom-btn">
           <v-icon class="md:flex hidden">mdi-cart-outline</v-icon>
         </v-btn>
@@ -29,7 +38,6 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-  
   </v-app>
 </template>
 
@@ -58,10 +66,9 @@ export default {
       this.drawer = !this.drawer;
     },
     goToUser() {
-    this.$router.push({ path: "userpage" });
+      this.$router.push({ path: "userpage" });
+    },
   },
-  },
-
 };
 </script>
 
