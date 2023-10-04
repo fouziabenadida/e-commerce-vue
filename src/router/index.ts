@@ -1,5 +1,6 @@
 // Composables
 import HomeView from '../views/HomeView.vue'
+
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -8,6 +9,7 @@ const routes = [
     name: 'HomeView',
     component: HomeView
   },
+
 ]
 
 const router = createRouter({
