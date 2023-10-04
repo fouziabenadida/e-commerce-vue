@@ -30,6 +30,7 @@
           >
             <v-card-title class="text-center">
               <v-btn
+              @click="loginDialog = true"
                 width="100%"
                 max-height="100px"
                 color="#F5AB3D"
@@ -45,6 +46,7 @@
             </p>
             <v-card-title class="text-center">
               <v-btn
+              @click="registerDialog = true"
                 width="100%"
                 style="color: #f5ab3d; border: #f5ab3d"
                 class="pa-2 mt-2 register-btn"
@@ -72,18 +74,26 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+<login-dialog v-model="loginDialog"  @closeDialog="($event: any) => (loginDialog = $event)"/>
+<register-dialog v-model="registerDialog" @closeRegisterDialog="($event: any) => (registerDialog = $event)"/>
   </v-app>
 </template>
 
 <script lang="ts">
+import LoginDialog from './dialogs/LoginDialog.vue';
+import RegisterDialog from './dialogs/RegisterDialog.vue'
 export default {
   name: "Navigation",
-  components: {},
+  components: {
+    LoginDialog,
+    RegisterDialog
+  },
   data() {
     return {
       drawer: false,
       menu: false,
-      openDialog: false,
+      loginDialog: false,
+      registerDialog: false,
       items: [
         { text: "Home", icon: "mdi-home" },
         { text: "About", icon: "mdi-information" },
@@ -96,18 +106,17 @@ export default {
     toggleDrawer() {
       this.drawer = !this.drawer;
     },
-    goToUser() {
-      this.$router.push({ path: "userpage" });
-    },
+  closeDialog() {
+    this.loginDialog = false;
+  }
   },
 };
 </script>
 
 <style scoped>
-.custom-btn:hover {
+.custom-btn {
   background-color: #ffc107;
   color: #000000;
-  border-radius: 1px;
 }
 .register-btn:hover {
   background-color: #ffc107;
