@@ -11,7 +11,7 @@
               color: #333333;
             "
           >
-         Register
+            Login
           </v-card-title>
         </v-col>
         <v-col align="end" class="mr-4">
@@ -49,9 +49,9 @@ export default {
   },
   methods: {
     closeDialog() {
-        this.$emit('closeDialog', false);
-    }
-  }
+      this.$emit("closeDialog", false);
+    },
+  },
 };
 </script>
 
